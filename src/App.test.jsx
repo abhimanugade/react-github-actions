@@ -6,6 +6,6 @@ describe('App component', () => {
     test('renders the application', () => {
         render(<App />);
 
-        expect(screen.getByText(/vite/i)).toBeInTheDocument();
+        expect(screen.getByText(/Code step by step/i)).toBeInTheDocument();
     });
 });
