@@ -11,6 +11,7 @@ function App() {
     <>
 
       <h1>Code step by step</h1>
+      <h2>React github actions</h2>
     </>
   )
 }
