@@ -5,7 +5,7 @@ on:
         # branches: 
         #     - main
 jobs: 
-    first-job:
+    lint-job:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout
@@ -22,10 +22,40 @@ jobs:
 
             - name: run eslint
               run: npm run lint
+     
+    test-job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+              
+            - name: Setup Node.js
+              uses: actions/setup-node@v3
+              with:
+                node-version: '24'
+                cache: 'npm'
+
+            - name: Install dependencies
+              run: npm install
 
             - name: run test cases
               run: npm run test  
+     
+    build-job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
               
+            - name: Setup Node.js
+              uses: actions/setup-node@v3
+              with:
+                node-version: '24'
+                cache: 'npm'
+
+            - name: Install dependencies
+              run: npm install
+             
             - name: make react build
               run: npm run build  
 
@@ -34,6 +64,6 @@ jobs:
               with: 
                 name: react-build
                 path: dist/
-                retention-days: 7  
-                
+                retention-days: 7            
+
             
